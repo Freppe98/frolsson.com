@@ -6,50 +6,107 @@
   <title>Fredrik Olsson — frolsson.com</title>
   <meta name="description" content="Projects, CV, photos, and contact for Fredrik Olsson." />
 
-  <!-- Favicon (place /favicon.svg and/or /favicon.ico in repo root) -->
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#0b0f19">
 
   <style>
-    :root{--bg:#0b0f19;--fg:#e7eef7;--muted:#a8b3c7;--card:#121827;--acc:#4da3ff}
+    /* THEME */
+    :root{
+      --bg:#0b0f19; --fg:#e7eef7; --muted:#a8b3c7; --card:#121827; --acc:#4da3ff;
+      --glow1:#3557ff; --glow2:#4da3ff;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f9ff; --fg:#0c1426; --muted:#47536a; --card:#ffffff; --acc:#1e66ff }
+    }
+
+    /* BASE */
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;background:var(--bg);color:var(--fg)}
     .wrap{max-width:980px;margin:0 auto;padding:24px}
+    a{color:var(--acc)}
 
-    header{position:sticky;top:0;background:rgba(11,15,25,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #1f2433}
-    nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
-    nav a.brand{font-weight:800;text-decoration:none;color:var(--fg);font-size:28px;letter-spacing:.2px} /* bigger brand */
-    nav .links a{color:var(--muted);text-decoration:none;padding:10px 8px;border-radius:10px}
-    nav .links a:hover{background:#1b2233;color:var(--fg)}
+    /* NICE TOP BAR */
+    header{
+      position:sticky; top:0; z-index:10;
+      background:linear-gradient(180deg,rgba(14,18,28,.85),rgba(14,18,28,.65));
+      backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid #1f2433;
+      /* neon glow line */
+      box-shadow:0 1px 0 #1f2433, 0 2px 0 rgba(0,0,0,.07), 0 0 0 1px transparent,
+                 0 0 18px -6px var(--glow2), inset 0 -2px 0 rgba(255,255,255,.02);
+    }
+    nav{
+      display:flex; gap:18px; align-items:center; justify-content:space-between;
+      min-height:64px;
+    }
+    /* Brand badge */
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--fg)
+    }
+    .badge{
+      width:36px; height:36px; border-radius:999px;
+      background:radial-gradient(120% 120% at 30% 30%,var(--glow2),var(--glow1));
+      display:grid; place-items:center; font-weight:800; color:#00122a;
+      box-shadow:0 6px 18px -6px var(--glow2);
+    }
+    .brand span.title{font-weight:800; font-size:28px; letter-spacing:.2px}
 
+    /* Nav links */
+    .links{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+    .links a{
+      color:var(--muted); text-decoration:none; padding:10px 12px; border-radius:999px;
+      transition:background .2s,color .2s, transform .08s;
+    }
+    .links a:hover{background:rgba(77,163,255,.12); color:var(--fg)}
+    .links a:active{transform:translateY(1px)}
+
+    /* HERO + SECTIONS */
     .hero{padding:36px 0 18px}
-    .hero h1{font-size:30px;margin:0 0 6px} /* smaller About me */
-    .hero p{color:var(--muted);margin:0}
-
-    section{padding:28px 0;border-top:1px solid #1f2433}
+    .hero h1{font-size:30px; margin:0 0 6px}
+    .hero p{color:var(--muted); margin:0}
+    section{padding:28px 0; border-top:1px solid #1f2433}
     h2{margin:0 0 12px}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid #1f2433;border-radius:16px;padding:18px}
+    /* CARDS & GRID */
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+    .card{background:var(--card); border:1px solid #1f2433; border-radius:16px; overflow:hidden}
+    .card-body{padding:18px}
     .card h3{margin:10px 0 6px}
 
-    .btn{display:inline-block;background:var(--acc);color:#001633;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600}
-    .btn:focus,.btn:hover{filter:brightness(1.05)}
+    /* PROJECT IMAGE perfectly centered/cropped */
+    .thumb{
+      aspect-ratio: 16/9;           /* keeps a nice ratio */
+      width:100%; overflow:hidden;  /* masks overflow */
+      display:block; background:#0e1422;
+      border-bottom:1px solid #1f2433;
+    }
+    .thumb img{
+      width:100%; height:100%; object-fit:cover; object-position:center; display:block;
+      filter:saturate(1.05) contrast(1.02);
+    }
 
-    .img-fluid{display:block;max-width:100%;height:auto;border-radius:12px;border:1px solid #1f2433}
+    /* Buttons */
+    .btn{display:inline-block; background:var(--acc); color:#001633; text-decoration:none;
+         padding:10px 14px; border-radius:10px; font-weight:600}
+    .btn:hover{filter:brightness(1.05)}
 
-    footer{padding:36px 0;color:var(--muted);font-size:14px}
-    code,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
-    a{color:var(--acc)}
+    /* Generic responsive images (photo gallery) */
+    .img-fluid{display:block; max-width:100%; height:auto; border-radius:12px; border:1px solid #1f2433}
+
+    /* Footer */
+    footer{padding:36px 0; color:var(--muted); font-size:14px}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
       <nav aria-label="Main">
-        <a class="brand" href="/">Fredrik</a>
+        <a class="brand" href="/">
+          <span class="badge">F</span><span class="title">Fredrik</span>
+        </a>
         <div class="links">
           <a href="#projects">Projects</a>
           <a href="#cv">CV</a>
@@ -70,10 +127,15 @@
       <h2>Current projects</h2>
       <div class="grid">
         <article class="card">
-          <img class="img-fluid" src="/Drone1.jpg" alt="AqualityONE USV" width="800" height="500" loading="lazy">
-          <h3>AqualityONE USV</h3>
-          <p>Autonomous water-monitoring surface vessel.</p>
-          <a class="btn" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html" target="_blank" rel="noopener">View</a>
+          <a class="thumb" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html" target="_blank" rel="noopener">
+            <!-- Any image size—will be centered & cropped nicely -->
+            <img src="/Drone1.jpg" alt="AqualityONE USV">
+          </a>
+          <div class="card-body">
+            <h3>AqualityONE USV</h3>
+            <p>Autonomous water-monitoring surface vessel.</p>
+            <a class="btn" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html" target="_blank" rel="noopener">View</a>
+          </div>
         </article>
         <!-- Add more project cards as needed -->
       </div>
@@ -90,9 +152,9 @@
     <section id="photos">
       <h2>Photos</h2>
       <div class="grid">
-        <img class="img-fluid" src="/img/profile.jpg" alt="Fredrik Olsson" width="1200" height="800" loading="lazy">
-        <img class="img-fluid" src="/img/pcb-closeup.jpg" alt="Custom PCB close-up" width="1200" height="800" loading="lazy">
-        <img class="img-fluid" src="/img/usv-water.jpg" alt="USV during test run" width="1200" height="800" loading="lazy">
+        <img class="img-fluid" src="/IMG_2562.JPEG" alt=" " loading="lazy" width="800" height="500">
+        <img class="img-fluid" src="IMG_2563.JPEG" alt=" " loading="lazy" width="800" height="500">
+        <img class="img-fluid" src="IMG_2564.JPEG" alt=" " loading="lazy" width="800" height="500">
       </div>
     </section>
 
@@ -100,13 +162,7 @@
       <h2>Contact</h2>
       <p>Email: <a href="mailto:98frol52@live.se">98frol52@live.se</a></p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/fredrik-a-olsson/" target="_blank" rel="noopener">linkedin.com/in/fredrik-a-olsson</a></p>
-      <!-- To use a simple form without a backend, sign up at Formspree and replace the action URL below
-      <form action="https://formspree.io/f/your-id" method="POST">
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message" required></textarea>
-        <button class="btn" type="submit">Send</button>
-      </form>
-      -->
+      <p>OnlyFans: <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener">onlyfans.com/fredrikolsson</a></p>
     </section>
 
     <footer>
@@ -114,8 +170,6 @@
     </footer>
   </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
