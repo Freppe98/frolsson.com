@@ -3,11 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>frolsson.com</title>
-  <style>body{font:16px/1.5 system-ui;margin:40px;max-width:760px}</style>
+  <title>Fredrik Olsson — frolsson.com</title>
+  <meta name="description" content="Projects, CV, and contact for Fredrik Olsson." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#0b0f19">
+  <style>
+    :root{--bg:#0b0f19;--fg:#e7eef7;--muted:#a8b3c7;--card:#121827;--acc:#4da3ff}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(11,15,25,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #1f2433}
+    nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    nav a.brand{font-weight:700;text-decoration:none;color:var(--fg)}
+    nav .links a{color:var(--muted);text-decoration:none;padding:10px 8px;border-radius:10px}
+    nav .links a:hover{background:#1b2233;color:var(--fg)}
+    .hero{padding:48px 0 24px}
+    .hero h1{font-size:42px;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0}
+    section{padding:28px 0;border-top:1px solid #1f2433}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid #1f2433;border-radius:16px;padding:18px}
+    .card h3{margin:0 0 6px}
+    .btn{display:inline-block;background:var(--acc);color:#001633;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600}
+    footer{padding:36px 0;color:var(--muted);font-size:14px}
+    code,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    a{color:var(--acc)}
+  </style>
 </head>
 <body>
-  <h1>Hej 👋</h1>
-  <p>Welcome to frolsson.com — built with GitHub Pages.</p>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="/">frolsson.com</a>
+        <div class="links">
+          <a href="#projects">Projects</a>
+          <a href="#cv">CV</a>
+          <a href="#contact">Contact</a>
+          <a href="https://github.com/Freppe98" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Hej 👋 I’m Fredrik</h1>
+      <p>Embedded & intelligent systems, robotics, and machine vision. This is my tiny corner of the web.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>AQUALITY USV</h3>
+          <p>Autonomous water-monitoring surface vessel. Pixhawk + Raspberry Pi, sensor fusion, ROS2 nodes.</p>
+          <a class="btn" href="https://github.com/Freppe98" target="_blank" rel="noopener">View code</a>
+        </article>
+        <article class="card">
+          <h3>HUST Solar Car electronics</h3>
+          <p>Power distribution PCBs, telemetry, and safety systems for a solar-powered race car.</p>
+        </article>
+        <article class="card">
+          <h3>Machine-vision demos</h3>
+          <p>OpenCV/YOLO experiments for defect detection and measurement pipelines.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>CV</h2>
+      <p>Download my latest CV:</p>
+      <p><a class="btn" href="/cv/Fredrik_Olsson_CV.pdf">Download PDF</a></p>
+      <p style="color:var(--muted)">Place your file at <code>/cv/Fredrik_Olsson_CV.pdf</code> in the repo.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:98fredrikolsson52@gmail.com">98fredrikolsson52@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noopener">add link</a></p>
+      <p>For a form without a server, use <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> and point a simple form to their endpoint.</p>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Fredrik Olsson • Hosted on GitHub Pages
+    </footer>
+  </main>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
