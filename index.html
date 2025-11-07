@@ -4,28 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Fredrik Olsson — frolsson.com</title>
-  <meta name="description" content="Projects, CV, and contact for Fredrik Olsson." />
+  <meta name="description" content="Projects, CV, photos, and contact for Fredrik Olsson." />
+
+  <!-- Favicon (place /favicon.svg and/or /favicon.ico in repo root) -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#0b0f19">
+
   <style>
     :root{--bg:#0b0f19;--fg:#e7eef7;--muted:#a8b3c7;--card:#121827;--acc:#4da3ff}
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;background:var(--bg);color:var(--fg)}
     .wrap{max-width:980px;margin:0 auto;padding:24px}
+
     header{position:sticky;top:0;background:rgba(11,15,25,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #1f2433}
     nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
-    nav a.brand{font-weight:700;text-decoration:none;color:var(--fg)}
+    nav a.brand{font-weight:800;text-decoration:none;color:var(--fg);font-size:28px;letter-spacing:.2px} /* bigger brand */
     nav .links a{color:var(--muted);text-decoration:none;padding:10px 8px;border-radius:10px}
     nav .links a:hover{background:#1b2233;color:var(--fg)}
-    .hero{padding:48px 0 24px}
-    .hero h1{font-size:42px;margin:0 0 8px}
+
+    .hero{padding:36px 0 18px}
+    .hero h1{font-size:30px;margin:0 0 6px} /* smaller About me */
     .hero p{color:var(--muted);margin:0}
+
     section{padding:28px 0;border-top:1px solid #1f2433}
+    h2{margin:0 0 12px}
+
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid #1f2433;border-radius:16px;padding:18px}
-    .card h3{margin:0 0 6px}
+    .card h3{margin:10px 0 6px}
+
     .btn{display:inline-block;background:var(--acc);color:#001633;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600}
+    .btn:focus,.btn:hover{filter:brightness(1.05)}
+
+    .img-fluid{display:block;max-width:100%;height:auto;border-radius:12px;border:1px solid #1f2433}
+
     footer{padding:36px 0;color:var(--muted);font-size:14px}
     code,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
     a{color:var(--acc)}
@@ -34,11 +48,12 @@
 <body>
   <header>
     <div class="wrap">
-      <nav>
+      <nav aria-label="Main">
         <a class="brand" href="/">Fredrik</a>
         <div class="links">
           <a href="#projects">Projects</a>
           <a href="#cv">CV</a>
+          <a href="#photos">Photos</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -46,33 +61,54 @@
   </header>
 
   <main class="wrap">
-    <section class="hero">
+    <section class="hero" id="about">
       <h1>About me</h1>
-      <p>Mechatronics engineer studying final year of embedded & intelligent systems in Halmstad. looking for collaboration on Master Thesis. </p>
+      <p>Mechatronics engineer studying final year of Embedded & Intelligent Systems in Halmstad. Looking for collaboration on a Master’s thesis.</p>
     </section>
 
     <section id="projects">
       <h2>Current projects</h2>
       <div class="grid">
         <article class="card">
+          <img class="img-fluid" src="/img/aquality.jpg" alt="AqualityONE USV on water" width="1200" height="800" loading="lazy">
           <h3>AqualityONE USV</h3>
           <p>Autonomous water-monitoring surface vessel.</p>
           <a class="btn" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html" target="_blank" rel="noopener">View</a>
+        </article>
+        <!-- Add more project cards as needed -->
       </div>
     </section>
 
     <section id="cv">
-      <h2>CV / Resume</h2>
+      <h2>CV / Résumé</h2>
       <p>CV English:</p>
-      <p><a class="btn" href="/FO_CV_English.pdf">See PDF</a></p>
+      <p><a class="btn" href="/FO_CV_English.pdf" target="_blank" rel="noopener">See PDF</a></p>
       <p>CV Swedish:</p>
-      <p><a class="btn" href="/FO_CV_Swedish.pdf">See PDF</a></p>
+      <p><a class="btn" href="/FO_CV_Swedish.pdf" target="_blank" rel="noopener">See PDF</a></p>
+      <p style="color:#a8b3c7">Place your PDFs at <code>/FO_CV_English.pdf</code> and <code>/FO_CV_Swedish.pdf</code> in the repo root (or adjust the links).</p>
+    </section>
+
+    <section id="photos">
+      <h2>Photos</h2>
+      <div class="grid">
+        <img class="img-fluid" src="/img/profile.jpg" alt="Fredrik Olsson" width="1200" height="800" loading="lazy">
+        <img class="img-fluid" src="/img/pcb-closeup.jpg" alt="Custom PCB close-up" width="1200" height="800" loading="lazy">
+        <img class="img-fluid" src="/img/usv-water.jpg" alt="USV during test run" width="1200" height="800" loading="lazy">
+      </div>
+      <p style="color:#a8b3c7">Add images under <code>/img/</code>. Use ~1600px wide JPGs for photos; PNG/SVG for graphics.</p>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Private email: <a href="98frol52@live.se">98frol52@live.se</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/" target="linkedin.com/in/fredrik-a-olsson" rel="noopener">linkedin.com/in/fredrik-a-olsson</a></p>
+      <p>Email: <a href="mailto:98frol52@live.se">98frol52@live.se</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/fredrik-a-olsson/" target="_blank" rel="noopener">linkedin.com/in/fredrik-a-olsson</a></p>
+      <!-- To use a simple form without a backend, sign up at Formspree and replace the action URL below
+      <form action="https://formspree.io/f/your-id" method="POST">
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+      -->
     </section>
 
     <footer>
@@ -80,6 +116,8 @@
     </footer>
   </main>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
