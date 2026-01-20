@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fredrik Olsson — frolsson.com</title>
-  <meta name="description" content="Projects, CV, photos, and contact for Fredrik Olsson." />
+  <title>Fredrik Olsson — CV</title>
+  <meta name="description" content="CV / Resume for Fredrik Olsson (Embedded & Intelligent Systems)." />
   <meta name="theme-color" content="#0b0f19">
   <meta name="color-scheme" content="dark">
 
@@ -18,12 +18,21 @@
       --bg:#0b0f19; --fg:#e7eef7; --muted:#a8b3c7;
       --card:#121827; --line:#1f2433; --acc:#4da3ff;
       --glow1:#3557ff; --glow2:#4da3ff;
+      --ok:#30d158; --warn:#ffd60a;
+
+      --max:980px;
+      --r:16px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;background:var(--bg);color:var(--fg)}
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    body{
+      margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+      background:var(--bg);color:var(--fg)
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
     a{color:var(--acc);text-decoration:none}
+    a:hover{text-decoration:underline}
 
     header{
       position:sticky;top:0;z-index:10;
@@ -34,90 +43,311 @@
     }
     nav{display:flex;gap:18px;align-items:center;justify-content:space-between;min-height:64px}
     .brand{display:flex;align-items:center;gap:10px;color:var(--fg)}
-    .badge{width:36px;height:36px;border-radius:999px;display:grid;place-items:center;background:radial-gradient(120% 120% at 30% 30%,var(--glow2),var(--glow1));color:#00122a;font-weight:800;box-shadow:0 6px 18px -6px var(--glow2)}
-    .brand .title{font-weight:800;font-size:28px;letter-spacing:.2px}
+    .badge{
+      width:36px;height:36px;border-radius:999px;display:grid;place-items:center;
+      background:radial-gradient(120% 120% at 30% 30%,var(--glow2),var(--glow1));
+      color:#00122a;font-weight:800;box-shadow:0 6px 18px -6px var(--glow2)
+    }
+    .brand .title{font-weight:800;font-size:22px;letter-spacing:.2px}
     .links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-    .links a{color:var(--muted);padding:10px 12px;border-radius:999px;transition:.2s}
-    .links a:hover{background:rgba(77,163,255,.12);color:var(--fg)}
+    .links a{
+      color:var(--muted);padding:10px 12px;border-radius:999px;transition:.2s;
+      white-space:nowrap;
+    }
+    .links a:hover{background:rgba(77,163,255,.12);color:var(--fg);text-decoration:none}
 
-    .hero{padding:36px 0 18px}
-    .hero h1{font-size:30px;margin:0 0 6px}
-    .hero p{color:var(--muted);margin:0}
+    .right{display:flex;align-items:center;gap:10px}
+    .lang{
+      display:flex;align-items:center;gap:6px;
+      padding:6px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,.02);
+    }
+    .lang button{
+      appearance:none;border:0;cursor:pointer;
+      padding:8px 10px;border-radius:999px;
+      background:transparent;color:var(--muted);font-weight:700;
+      transition:.2s;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(77,163,255,.18);
+      color:var(--fg);
+      box-shadow:0 0 0 1px rgba(77,163,255,.25) inset;
+    }
+    .lang button:hover{color:var(--fg)}
+
+    main{padding-top:8px}
     section{padding:28px 0;border-top:1px solid var(--line)}
-    h2{margin:0 0 12px}
-
+    section:first-of-type{border-top:0}
+    h1{font-size:30px;margin:0 0 10px}
+    h2{margin:0 0 12px;font-size:20px}
+    h3{margin:14px 0 6px;font-size:16px}
+    p{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .hero{padding:18px 0 12px}
+    .hero-top{
+      display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    }
+    .meta{
+      display:flex;flex-wrap:wrap;gap:10px;
+      color:var(--muted);
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line); background:rgba(255,255,255,.02);
+      padding:8px 12px;border-radius:999px;
+    }
+    .pill b{color:var(--fg)}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
     .card-body{padding:18px}
-    .card h3{margin:10px 0 6px}
+    .btn{
+      display:inline-block;background:var(--acc);color:#001633;
+      padding:10px 14px;border-radius:10px;font-weight:700;
+      text-decoration:none;
+    }
+    .btn:hover{filter:brightness(1.05);text-decoration:none}
+    .btn.secondary{
+      background:transparent;color:var(--fg);
+      border:1px solid var(--line);
+    }
+    .btn.secondary:hover{background:rgba(255,255,255,.04)}
+    .two{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
+    @media (max-width: 820px){ .two{grid-template-columns:1fr} }
 
-    .btn{display:inline-block;background:var(--acc);color:#001633;padding:10px 14px;border-radius:10px;font-weight:600}
-    .btn:hover{filter:brightness(1.05)}
+    ul{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0}
+    .kv{display:grid;grid-template-columns:160px 1fr;gap:10px}
+    @media (max-width: 520px){ .kv{grid-template-columns:1fr} }
 
-    .img-fluid{display:block;max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
-    footer{padding:36px 0;color:var(--muted);font-size:14px}
+    footer{padding:36px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap">
       <nav aria-label="Main">
-        <a class="brand" href="/"><span class="badge">F</span><span class="title">Fredrik</span></a>
-        <div class="links">
-          <a href="#projects">Projects</a>
-          <a href="#cv">CV</a>
-          <a href="#photos">Photos</a>
-          <a href="#contact">Contact</a>
+        <a class="brand" href="#top">
+          <span class="badge">F</span>
+          <span class="title">Fredrik Olsson</span>
+        </a>
+
+        <div class="right">
+          <div class="links" id="navLinks">
+            <a href="#profile" data-i18n="nav_profile">Profile</a>
+            <a href="#experience" data-i18n="nav_experience">Experience</a>
+            <a href="#projects" data-i18n="nav_projects">Projects</a>
+            <a href="#education" data-i18n="nav_education">Education</a>
+            <a href="#skills" data-i18n="nav_skills">Skills</a>
+            <a href="#contact" data-i18n="nav_contact">Contact</a>
+          </div>
+
+          <div class="lang" role="group" aria-label="Language">
+            <button id="btnEN" type="button" aria-pressed="true">EN</button>
+            <button id="btnSV" type="button" aria-pressed="false">SV</button>
+          </div>
         </div>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero" id="about">
-      <h1>TESTING TESTING YES</h1>
-      <p>Mechatronics engineer studying final year of Embedded & Intelligent Systems in Halmstad.</p>
+  <main class="wrap" id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="profile">
+      <div class="hero-top">
+        <div>
+          <h1 data-i18n="name">Fredrik Olsson</h1>
+          <p class="muted" data-i18n="headline">
+            Mechatronics engineer and master’s student in Embedded and Intelligent Systems at Halmstad University.
+          </p>
+        </div>
+        <div class="meta">
+          <span class="pill"><b data-i18n="meta_phone_label">Phone</b> <span data-i18n="meta_phone">+46 767 111 033</span></span>
+          <span class="pill"><b>Email</b> <a href="mailto:98frol52@live.se">98frol52@live.se</a></span>
+          <span class="pill"><b>LinkedIn</b> <a href="https://www.linkedin.com/in/fredrik-a-olsson/" target="_blank" rel="noopener">fredrik-a-olsson</a></span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="#contact" data-i18n="cta_contact">Contact me</a>
+        <a class="btn secondary" href="/FO_CV_English.pdf" target="_blank" rel="noopener" data-i18n="cta_pdf_en">Download PDF (EN)</a>
+        <a class="btn secondary" href="/FO_CV_Swedish.pdf" target="_blank" rel="noopener" data-i18n="cta_pdf_sv">Download PDF (SV)</a>
+      </div>
     </section>
 
-    <!-- Projects WITHOUT image -->
-    <section id="projects">
-      <h2>Current projects</h2>
+    <!-- ABOUT / SUMMARY -->
+    <section id="summary">
+      <h2 data-i18n="summary_title">Summary</h2>
+      <div class="two">
+        <div class="card">
+          <div class="card-body">
+            <p data-i18n="summary_text">
+              Strong interest in electronics, robotics, embedded systems, and AI. Engaged in multiple university projects and comfortable working both independently and in group.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body kv">
+            <div class="muted" data-i18n="other_title">Other</div>
+            <div>
+              <div data-i18n="other_items">Driver’s license (B), Coastal skipper certificate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 data-i18n="exp_title">Work experience</h2>
+
       <div class="grid">
         <article class="card">
           <div class="card-body">
-            <h3>AqualityONE USV</h3>
-            <p>Autonomous water-monitoring surface vessel.</p>
-            <a class="btn" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html" target="_blank" rel="noopener">View</a>
+            <h3 data-i18n="exp1_role">Dive Leader & Tender</h3>
+            <p class="muted"><span data-i18n="exp1_company">Dyk & Båt AB, Ringhals Väröbacka</span> • <span data-i18n="exp1_years">2017–</span></p>
+            <ul>
+              <li data-i18n="exp1_b1">Support to divers before, during and after dives.</li>
+              <li data-i18n="exp1_b2">Planning and documentation of underwater operations, safe communication, and emergency preparedness.</li>
+            </ul>
           </div>
         </article>
-        <!-- Add more project cards as needed -->
+
+        <article class="card">
+          <div class="card-body">
+            <h3 data-i18n="exp2_role">Picker / Packer</h3>
+            <p class="muted"><span data-i18n="exp2_company">Coloplast AB, Kungsbacka</span> • <span data-i18n="exp2_years">2018</span></p>
+            <ul>
+              <li data-i18n="exp2_b1">Order picking and packing under time pressure with accuracy requirements.</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="cv">
-      <h2>CV / Résumé</h2>
-      <p>CV English:</p>
-      <p><a class="btn" href="/FO_CV_English.pdf" target="_blank" rel="noopener">See PDF</a></p>
-      <p>CV Swedish:</p>
-      <p><a class="btn" href="/FO_CV_Swedish.pdf" target="_blank" rel="noopener">See PDF</a></p>
-    </section>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 data-i18n="proj_title">Projects</h2>
 
-    <section id="photos">
-      <h2>Photos</h2>
       <div class="grid">
-        <img class="img-fluid" src="/IMG_2562.JPEG" alt="Photo 1" loading="lazy" width="800" height="500">
-        <img class="img-fluid" src="/IMG_2563.JPEG" alt="Photo 2" loading="lazy" width="800" height="500">
-        <img class="img-fluid" src="/IMG_2564.JPEG" alt="Photo 3" loading="lazy" width="800" height="500">
-        <img class="img-fluid" src="/Drone1.jpg" alt="Photo 4" loading="lazy" width="800" height="500">
-        <img class="img-fluid" src="/Drone2.jpg" alt="Photo 5" loading="lazy" width="800" height="500">
+        <article class="card">
+          <div class="card-body">
+            <h3 data-i18n="p1_title">Aquality (Halmstad University)</h3>
+            <p class="muted" data-i18n="p1_role">Electronics Engineer • 2021–</p>
+            <p data-i18n="p1_desc">Design, development, and assembly of electronics (PCBs, sensors, power systems) for an autonomous surface vessel collecting environmental water data.</p>
+            <a class="btn" href="https://www.hh.se/forskning/var-forskning/forskning-vid-akademin-for-foretagande-innovation-och-hallbarhet/forskningsprojekt-vid-akademin-for-foretagande-innovation-och-hallbarhet/aquality-halmstad.html"
+               target="_blank" rel="noopener" data-i18n="p1_btn">View</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 data-i18n="p2_title">Halmstad University Solar Team (HUST)</h3>
+            <p class="muted" data-i18n="p2_role">Electronics Group Leader • 2021–2023</p>
+            <p data-i18n="p2_desc">Responsible for the electronics group and participated with a solar-powered car in the Bridgestone World Solar Challenge 2023 in Australia.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 data-i18n="p3_title">Halmstad University Solar Team (HUST)</h3>
+            <p class="muted" data-i18n="p3_role">Battery Officer • 2020–2021</p>
+            <p data-i18n="p3_desc">Developed and built battery packs with balancing and safety systems. Practical experience with CANbus.</p>
+          </div>
+        </article>
       </div>
     </section>
 
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 data-i18n="edu_title">Education</h2>
+
+      <div class="grid">
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="e1_title">M.Sc. Embedded and Intelligent Systems</h3>
+          <p class="muted" data-i18n="e1_place">Halmstad University • 2024–</p>
+          <p data-i18n="e1_desc">Networks, real-time systems, robotics, machine learning (AI).</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="e2_title">B.Sc. Mechatronics Engineering</h3>
+          <p class="muted" data-i18n="e2_place">Halmstad University • 2019–2022</p>
+          <p data-i18n="e2_desc">Electronics, mechanics, control theory, actuators, data structures, and embedded systems.</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="e3_title">Basic Military Training</h3>
+          <p class="muted" data-i18n="e3_place">F21, Luleå • 2017–2018</p>
+          <p data-i18n="e3_desc">Teamwork and endurance under physical and mental stress.</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="e4_title">Technology Program, Engineering Science</h3>
+          <p class="muted" data-i18n="e4_place">Elof Lindälvs Gymnasium, Kungsbacka • 2014–2017</p>
+          <p data-i18n="e4_desc">Specialization in mathematics and engineering.</p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 data-i18n="skills_title">Skills</h2>
+
+      <div class="grid">
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="s_prog_title">Programming</h3>
+          <p class="muted" data-i18n="s_prog">MATLAB, C, Java, Python, Assembly</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="s_cad_title">CAD</h3>
+          <p class="muted" data-i18n="s_cad">SolidWorks, Onshape</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="s_ecad_title">ECAD</h3>
+          <p class="muted" data-i18n="s_ecad">Altium, EasyEDA</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="s_other_title">Other</h3>
+          <p class="muted" data-i18n="s_other">LaTeX, Office, 3D printing</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="s_lang_title">Languages</h3>
+          <p class="muted" data-i18n="s_lang">Swedish (native), English (fluent), German (basic)</p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- REFERENCES -->
+    <section id="references">
+      <h2 data-i18n="ref_title">References</h2>
+      <div class="grid">
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="r1_title">HUST & Aquality</h3>
+          <p class="muted" data-i18n="r1_person">Assoc. Professor Joakim Tell, Halmstad University</p>
+          <p><a href="tel:+46707658167" data-i18n="r1_phone">+46 70 765 81 67</a> • <a href="mailto:joakim.tell@hh.se">joakim.tell@hh.se</a></p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <h3 data-i18n="r2_title">Dyk & Båt AB</h3>
+          <p class="muted" data-i18n="r2_person">Tomas Nilsson</p>
+          <p><a href="tel:+46703460667" data-i18n="r2_phone">+46 70 346 06 67</a> • <a href="mailto:tomas.nilsson@vattenfall.com">tomas.nilsson@vattenfall.com</a></p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:98frol52@live.se">98frol52@live.se</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/fredrik-a-olsson/" target="_blank" rel="noopener">linkedin.com/in/fredrik-a-olsson</a></p>
-      <p>OnlyFans: <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener">onlyfans.com/fredrikolsson</a></p>
+      <h2 data-i18n="contact_title">Contact</h2>
+      <p><b>Email:</b> <a href="mailto:98frol52@live.se">98frol52@live.se</a></p>
+      <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/fredrik-a-olsson/" target="_blank" rel="noopener">linkedin.com/in/fredrik-a-olsson</a></p>
+
+      <!-- keep your meme link if you want -->
+      <p class="muted" data-i18n="contact_note">Tip: Add GitHub + portfolio highlights here (2–3 bullets) for recruiters.</p>
     </section>
 
     <footer>
@@ -125,6 +355,206 @@
     </footer>
   </main>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const i18n = {
+      en: {
+        nav_profile: "Profile",
+        nav_experience: "Experience",
+        nav_projects: "Projects",
+        nav_education: "Education",
+        nav_skills: "Skills",
+        nav_contact: "Contact",
+
+        name: "Fredrik Olsson",
+        headline: "Mechatronics engineer and master’s student in Embedded and Intelligent Systems at Halmstad University.",
+        meta_phone_label: "Phone",
+        meta_phone: "+46 767 111 033",
+        cta_contact: "Contact me",
+        cta_pdf_en: "Download PDF (EN)",
+        cta_pdf_sv: "Download PDF (SV)",
+
+        summary_title: "Summary",
+        summary_text: "Strong interest in electronics, robotics, embedded systems, and AI. Engaged in multiple university projects and comfortable working both independently and in group.",
+        other_title: "Other",
+        other_items: "Driver’s license (B), Coastal skipper certificate",
+
+        exp_title: "Work experience",
+        exp1_role: "Dive Leader & Tender",
+        exp1_company: "Dyk & Båt AB, Ringhals Väröbacka",
+        exp1_years: "2017–",
+        exp1_b1: "Support to divers before, during and after dives.",
+        exp1_b2: "Planning and documentation of underwater operations, safe communication, and emergency preparedness.",
+
+        exp2_role: "Picker / Packer",
+        exp2_company: "Coloplast AB, Kungsbacka",
+        exp2_years: "2018",
+        exp2_b1: "Order picking and packing under time pressure with accuracy requirements.",
+
+        proj_title: "Projects",
+        p1_title: "Aquality (Halmstad University)",
+        p1_role: "Electronics Engineer • 2021–",
+        p1_desc: "Design, development, and assembly of electronics (PCBs, sensors, power systems) for an autonomous surface vessel collecting environmental water data.",
+        p1_btn: "View",
+        p2_title: "Halmstad University Solar Team (HUST)",
+        p2_role: "Electronics Group Leader • 2021–2023",
+        p2_desc: "Responsible for the electronics group and participated with a solar-powered car in the Bridgestone World Solar Challenge 2023 in Australia.",
+        p3_title: "Halmstad University Solar Team (HUST)",
+        p3_role: "Battery Officer • 2020–2021",
+        p3_desc: "Developed and built battery packs with balancing and safety systems. Practical experience with CANbus.",
+
+        edu_title: "Education",
+        e1_title: "M.Sc. Embedded and Intelligent Systems",
+        e1_place: "Halmstad University • 2024–",
+        e1_desc: "Networks, real-time systems, robotics, machine learning (AI).",
+        e2_title: "B.Sc. Mechatronics Engineering",
+        e2_place: "Halmstad University • 2019–2022",
+        e2_desc: "Electronics, mechanics, control theory, actuators, data structures, and embedded systems.",
+        e3_title: "Basic Military Training",
+        e3_place: "F21, Luleå • 2017–2018",
+        e3_desc: "Teamwork and endurance under physical and mental stress.",
+        e4_title: "Technology Program, Engineering Science",
+        e4_place: "Elof Lindälvs Gymnasium, Kungsbacka • 2014–2017",
+        e4_desc: "Specialization in mathematics and engineering.",
+
+        skills_title: "Skills",
+        s_prog_title: "Programming",
+        s_prog: "MATLAB, C, Java, Python, Assembly",
+        s_cad_title: "CAD",
+        s_cad: "SolidWorks, Onshape",
+        s_ecad_title: "ECAD",
+        s_ecad: "Altium, EasyEDA",
+        s_other_title: "Other",
+        s_other: "LaTeX, Office, 3D printing",
+        s_lang_title: "Languages",
+        s_lang: "Swedish (native), English (fluent), German (basic)",
+
+        ref_title: "References",
+        r1_title: "HUST & Aquality",
+        r1_person: "Assoc. Professor Joakim Tell, Halmstad University",
+        r1_phone: "+46 70 765 81 67",
+        r2_title: "Dyk & Båt AB",
+        r2_person: "Tomas Nilsson",
+        r2_phone: "+46 70 346 06 67",
+
+        contact_title: "Contact",
+        contact_note: "Tip: Add GitHub + portfolio highlights here (2–3 bullets) for recruiters."
+      },
+
+      sv: {
+        nav_profile: "Profil",
+        nav_experience: "Erfarenhet",
+        nav_projects: "Projekt",
+        nav_education: "Utbildning",
+        nav_skills: "Kunskaper",
+        nav_contact: "Kontakt",
+
+        name: "Fredrik Olsson",
+        headline: "Mekatronikingenjör och masterstudent i inbyggda och intelligenta system vid Högskolan i Halmstad.",
+        meta_phone_label: "Telefon",
+        meta_phone: "0767 111 033",
+        cta_contact: "Kontakta mig",
+        cta_pdf_en: "Ladda ner PDF (EN)",
+        cta_pdf_sv: "Ladda ner PDF (SV)",
+
+        summary_title: "Kort om mig",
+        summary_text: "Stort intresse och erfarenhet inom elektronik, robotik, inbyggda system och AI. Engagerad i studentprojekt och trivs med att både arbeta ensam och i grupp.",
+        other_title: "Övrigt",
+        other_items: "B-körkort, Kustskepparintyg",
+
+        exp_title: "Arbetslivserfarenhet",
+        exp1_role: "Dykledare & Dykskötare",
+        exp1_company: "Dyk & Båt AB, Ringhals Väröbacka",
+        exp1_years: "2017–",
+        exp1_b1: "Stöd till dykare före, under och efter dyk.",
+        exp1_b2: "Planering och dokumentation av undervattensarbeten, säker kommunikation samt beredskap i nödsituationer.",
+
+        exp2_role: "Plockare / Packare",
+        exp2_company: "Coloplast AB, Kungsbacka",
+        exp2_years: "2018",
+        exp2_b1: "Plock och pack av order, logistik, tidspress och noggrannhet.",
+
+        proj_title: "Projekt",
+        p1_title: "Aquality (Högskolan i Halmstad)",
+        p1_role: "Elektronik • 2021–",
+        p1_desc: "Design, utveckling och montering av elektronik (kretskort, sensorer, kraftsystem) till en autonom ytfarkost som samlar in data om vattenmiljöer.",
+        p1_btn: "Visa",
+        p2_title: "Halmstad University Solar Team (HUST)",
+        p2_role: "Gruppledare elektronik • 2021–2023",
+        p2_desc: "Ansvar för elektronikgruppen och deltog med solcellsdriven elbil i Bridgestone World Solar Challenge 2023 i Australien.",
+        p3_title: "Halmstad University Solar Team (HUST)",
+        p3_role: "Batteriansvarig • 2020–2021",
+        p3_desc: "Utvecklade och byggde batteripaket med balanserings- och säkerhetssystem. Praktisk erfarenhet av CAN-bus.",
+
+        edu_title: "Utbildning",
+        e1_title: "M.Sc Inbyggda och intelligenta system",
+        e1_place: "Högskolan i Halmstad • 2024–",
+        e1_desc: "Nätverk, realtidsystem, robotik, machine learning (AI).",
+        e2_title: "B.Sc Mekatronikingenjör",
+        e2_place: "Högskolan i Halmstad • 2019–2022",
+        e2_desc: "Elektronik, mekanik, reglerteknik, aktuatorer, datastrukturer och inbyggda system.",
+        e3_title: "Grundläggande militär utbildning",
+        e3_place: "F21, Luleå • 2017–2018",
+        e3_desc: "Samarbete och uthållighet under fysisk och mental belastning.",
+        e4_title: "Teknikprogrammet, Teknikvetenskap",
+        e4_place: "Elof Lindälvs Gymnasium, Kungsbacka • 2014–2017",
+        e4_desc: "Fokus på matematik och teknik.",
+
+        skills_title: "Kunskaper",
+        s_prog_title: "Programmering",
+        s_prog: "MATLAB, C, Java, Python, Assembly",
+        s_cad_title: "CAD",
+        s_cad: "SolidWorks, Onshape",
+        s_ecad_title: "ECAD",
+        s_ecad: "Altium, EasyEDA",
+        s_other_title: "Övrigt",
+        s_other: "LaTeX, Office, 3D-skrivare",
+        s_lang_title: "Språk",
+        s_lang: "Svenska (modersmål), Engelska (flytande), Tyska (grundläggande)",
+
+        ref_title: "Referenser",
+        r1_title: "HUST och Aquality",
+        r1_person: "Bitr. professor Joakim Tell, Högskolan i Halmstad",
+        r1_phone: "070-765 81 67",
+        r2_title: "Dyk & Båt AB",
+        r2_person: "Tomas Nilsson",
+        r2_phone: "070-346 06 67",
+
+        contact_title: "Kontakt",
+        contact_note: "Tips: Lägg till GitHub + 2–3 highlights här för rekryterare."
+      }
+    };
+
+    const btnEN = document.getElementById("btnEN");
+    const btnSV = document.getElementById("btnSV");
+
+    function setLang(lang){
+      const dict = i18n[lang] || i18n.en;
+      document.documentElement.lang = lang;
+
+      // update all [data-i18n]
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+
+      // pressed state
+      btnEN.setAttribute("aria-pressed", String(lang === "en"));
+      btnSV.setAttribute("aria-pressed", String(lang === "sv"));
+
+      // persist
+      try { localStorage.setItem("lang", lang); } catch(e){}
+    }
+
+    btnEN.addEventListener("click", () => setLang("en"));
+    btnSV.addEventListener("click", () => setLang("sv"));
+
+    // init
+    const saved = (() => {
+      try { return localStorage.getItem("lang"); } catch(e){ return null; }
+    })();
+    setLang(saved || "en");
+  </script>
 </body>
 </html>
